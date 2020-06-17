@@ -76,6 +76,7 @@
     usbutils
     xdg_utils
     mkpasswd
+    cifs-utils
     # Virtualisation
     # xen docker
   ];
