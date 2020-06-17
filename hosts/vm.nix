@@ -8,10 +8,19 @@
     [ <nixpkgs/nixos/modules/profiles/qemu-guest.nix>
     ];
 
-  boot.initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "ehci_pci" "sd_mod" "sr_mod" ];
-  boot.initrd.kernelModules = [ ];
-  boot.kernelModules = [ "kvm-intel" ];
-  boot.extraModulePackages = [ ];
+  boot = {
+    loader.grub = {
+      enable = true;
+      version = 2;
+      # efiSupport = true;
+      # efiInstallAsRemovable = true;
+      device = "/dev/sda";
+    };
+    initrd.availableKernelModules = [ "ata_piix" "uhci_hcd" "ehci_pci" "sd_mod" "sr_mod" ];
+    initrd.kernelModules = [ ];
+    kernelModules = [ "kvm-intel" ];
+    extraModulePackages = [ ];
+  };
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/9601ca54-5401-4ad3-8303-fcabb0912a6a";
@@ -19,6 +28,14 @@
     };
 
   swapDevices = [ ];
+
+  networking = {
+    hostName = "nixos";
+    wireless.enable = false;
+    # Interface-wide useDHCP will be deprecated, so per-interface useDHCP is used.
+    useDHCP = false;
+    interfaces.ens3.useDHCP = true;
+  };
 
   nix.maxJobs = lib.mkDefault 4;
 }

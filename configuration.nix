@@ -8,19 +8,10 @@
       ./modules/email.nix
     ];
 
-  # Use the GRUB 2 boot loader.
   boot = {
-    loader.grub.enable = true;
-    loader.grub.version = 2;
-  # loader.grub.efiSupport = true;
-  # loader.grub.efiInstallAsRemovable = true;
-  # loader.efi.efiSysMountPoint = "/boot/efi";
-  # Define on which hard drive you want to install Grub.
-    loader.grub.device = "/dev/sda"; # or "nodev" for efi only
     cleanTmpDir = true;
     enableContainers = true;
   };
-
 
   nix = {
     gc = {
