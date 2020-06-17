@@ -34,7 +34,6 @@
   systemd.services.nix-gc.unitConfig.ConditionACPower = true; # Only run Nix GC if plugged into wall.
 
   networking = {
-    hostName = "nixos"; # Define your hostname.
     nameservers = [ "8.8.8.8" "8.8.4.4" ];
   };
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -43,7 +42,6 @@
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
   networking.useDHCP = false;
-  networking.interfaces.ens3.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
