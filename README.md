@@ -6,7 +6,6 @@ Host-specific information and settings is placed in the corresponding file in `h
 Namely, you should end up with a `tree` output that looks similar to this:
 ```
 ├── configuration.nix
-├── configuration.nix.old
 ├── .git
 │ ├── ...
 ├── .gitignore
