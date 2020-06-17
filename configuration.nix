@@ -57,7 +57,6 @@
     unzip
     gnumake automake cmake
     zsh zsh-completions zsh-fast-syntax-highlighting zsh-git-prompt oh-my-zsh
-    mu
     vim emacs
     home-manager
     spotify
