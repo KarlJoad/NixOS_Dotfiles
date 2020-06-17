@@ -4,8 +4,8 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./system/graphical.nix
-      ./system/email.nix
+      ./modules/graphical.nix
+      ./modules/email.nix
     ];
 
   # Use the GRUB 2 boot loader.
