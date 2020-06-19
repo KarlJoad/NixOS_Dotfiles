@@ -78,11 +78,12 @@
     git wget
     unzip
     gnumake automake cmake
+    rxvt_unicode alacritty
+
     zsh zsh-completions zsh-fast-syntax-highlighting zsh-git-prompt oh-my-zsh
     stow
     vim emacs
     home-manager
-    rxvt_unicode
     octave
     transmission
     pwgen
