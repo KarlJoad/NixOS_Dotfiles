@@ -86,6 +86,7 @@
     home-manager
 
     tree
+    ark
 
     firefox
     torbrowser
