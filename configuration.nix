@@ -85,6 +85,11 @@
     vim emacs
     home-manager
 
+
+    firefox
+    torbrowser
+    transmission-gtk
+
     slack discord
 
     octave sage
@@ -148,7 +153,7 @@
                     "libvirtd"
                     "networkmanager"
                   ];
-    packages = with pkgs; [ firefox ];
+    packages = with pkgs; [ ];
     shell = "${pkgs.zsh}/bin/zsh";
     # hashedPassword found with mkpasswd -m sha-512
     hashedPassword = "$6$SP0uXGjZaunNycZ$B7Yt8sdT26cq3Na0pfoGvE36De7cFdzP63JvbtV6myPglK4.LY1w/jFlbnkH9nCNR7qj8/ZztYTrzQYcUb9Ac1";
