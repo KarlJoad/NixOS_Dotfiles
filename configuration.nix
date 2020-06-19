@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./modules/graphical.nix
       ./modules/email.nix
+      ./modules/doc.nix
     ];
 
   boot = {
@@ -70,9 +71,7 @@
     pwgen
     sddm-kcm
     # displaylink
-    manpages
     openssl
-    posix_man_pages
     usbutils
     xdg_utils
     mkpasswd
@@ -135,15 +134,6 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.03"; # Did you read the comment?
   system.autoUpgrade.channel = "https://channels.nixos.org/nixos-unstable/";
-
-  documentation = {
-    enable = true;
-    dev.enable = true;
-    doc.enable = true;
-    info.enable = true;
-    man.enable = true;
-    nixos.enable = true;
-  };
 
   # virtualisation = {
   #   docker.enable = true;
