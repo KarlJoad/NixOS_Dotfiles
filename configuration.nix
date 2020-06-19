@@ -100,6 +100,8 @@
     openssl
     xdg_utils
     mkpasswd
+    pass
+
   ];
   environment.shells = [ pkgs.bash pkgs.zsh ];
 
