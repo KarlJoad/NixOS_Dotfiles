@@ -4,6 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./modules/fs.nix
       ./modules/graphical.nix
       ./modules/email.nix
       ./modules/doc.nix
@@ -62,7 +63,6 @@
     vim emacs
     home-manager
     spotify
-    cifs-utils
     rxvt_unicode
     okular zathura
     pdftk
@@ -72,10 +72,8 @@
     sddm-kcm
     # displaylink
     openssl
-    usbutils
     xdg_utils
     mkpasswd
-    cifs-utils
     # Virtualisation
     # xen docker
   ];
