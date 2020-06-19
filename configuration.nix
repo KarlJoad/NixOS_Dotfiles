@@ -12,6 +12,7 @@
       ./modules/monitoring.nix
       ./modules/multimedia.nix
       ./modules/virtualization.nix
+      ./modules/games.nix
       ./modules/doc.nix
     ];
 
