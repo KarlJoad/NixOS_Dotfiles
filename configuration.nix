@@ -7,6 +7,7 @@
       ./modules/fs.nix
       ./modules/graphical.nix
       ./modules/email.nix
+      ./modules/doc-prep.nix
       ./modules/doc.nix
     ];
 
@@ -64,8 +65,6 @@
     home-manager
     spotify
     rxvt_unicode
-    okular zathura
-    pdftk
     octave
     transmission
     pwgen
