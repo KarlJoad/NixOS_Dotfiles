@@ -7,8 +7,12 @@
 
   boot = {
     loader = {
-      # Define on which hard drive you want to install Grub.
-      grub.device = "nodev"; # or "nodev" for efi only
+      grub = {
+        enable = false;
+        # Define on which hard drive you want to install Grub.
+        device = "nodev"; # or "nodev" for efi only
+        configurationLimit = 20; # Only keep the last 20 generations.
+      };
       # generationsDir.enable = true;
       timeout = 10;
       efi = {
@@ -18,7 +22,7 @@
 
       systemd-boot = {
         enable = true;
-        configurationLimit = 20;
+        configurationLimit = 20; # Only keep the last 20 generations.
         consoleMode = "keep";
         editor = false;
         memtest86.enable = true;
