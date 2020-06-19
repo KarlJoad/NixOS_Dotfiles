@@ -115,6 +115,7 @@
     extraGroups = [ "wheel"
                     "docker"
                     "libvirtd"
+                    "networkmanager"
                   ];
     packages = with pkgs; [ firefox ];
     shell = "${pkgs.zsh}/bin/zsh";
