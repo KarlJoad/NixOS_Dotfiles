@@ -9,6 +9,7 @@
       ./modules/email.nix
       ./modules/doc-prep.nix
       ./modules/monitoring.nix
+      ./modules/virtualization.nix
       ./modules/doc.nix
     ];
 
@@ -74,8 +75,6 @@
     openssl
     xdg_utils
     mkpasswd
-    # Virtualisation
-    # xen docker
   ];
   environment.shells = [ pkgs.bash pkgs.zsh ];
 
@@ -112,8 +111,11 @@
   users.users.karl = {
     isNormalUser = true;
     description = "Karl Hallsby";
-    extraGroups = [ "wheel" "docker" "libvirtd" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [ pass firefox ];
+    extraGroups = [ "wheel"
+                    "docker"
+                    "libvirtd"
+                  ];
+    packages = with pkgs; [ firefox ];
     shell = "${pkgs.zsh}/bin/zsh";
     # hashedPassword found with mkpasswd -m sha-512
     hashedPassword = "$6$SP0uXGjZaunNycZ$B7Yt8sdT26cq3Na0pfoGvE36De7cFdzP63JvbtV6myPglK4.LY1w/jFlbnkH9nCNR7qj8/ZztYTrzQYcUb9Ac1";
@@ -132,10 +134,4 @@
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "20.03"; # Did you read the comment?
   system.autoUpgrade.channel = "https://channels.nixos.org/nixos-unstable/";
-
-  # virtualisation = {
-  #   docker.enable = true;
-  #   libvirtd.enable = true;
-  #   xen.enable = true;
-  # };
 }
