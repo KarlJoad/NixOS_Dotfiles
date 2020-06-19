@@ -121,6 +121,8 @@
   sound.enable = false;
   hardware.pulseaudio.enable = false;
 
+  # Even though mutableUsers is false, root's password should still be set manually
+  # with the prompt that `nixos-install` has after finishing installation.
   users.mutableUsers = false;
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.karl = {
