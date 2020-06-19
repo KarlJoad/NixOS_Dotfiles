@@ -27,10 +27,17 @@
       dates = "weekly";
       options = "--delete-older-than 2d";
     };
+    optimise = {
+      automatic = true;
+      dates = [ "weekly" ];
+    };
     trustedUsers = [ "@wheel" "karl" ];
     nixPath = [ "nixpkgs=https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz" "nixos-config=/etc/nixos/configuration.nix" "home-manager=https://github.com/rycee/home-manager/archive/master.tar.gz" "/nix/var/nix/profiles/per-user/root/channels" ];
+  # Only run these Nix store services if plugged into wall.
+  systemd.services = {
+    nix-gc.unitConfig.ConditionACPower = true;
+    nix-optimise.unitConfig.ConditionACPower = true;
   };
-  systemd.services.nix-gc.unitConfig.ConditionACPower = true; # Only run Nix GC if plugged into wall.
 
   networking = {
     nameservers = [ "8.8.8.8" "8.8.4.4" ];
