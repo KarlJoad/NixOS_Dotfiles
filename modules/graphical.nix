@@ -6,7 +6,7 @@
     layout = "us";
 
     # Enable touchpad support.
-    libinput.enable = false;
+    libinput.enable = true;
 
     # Use the SDDM graphical login Display Manager
     displayManager = {
