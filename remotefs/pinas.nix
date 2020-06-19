@@ -1,0 +1,11 @@
+{ config, pkgs, ... }:
+
+{
+  fileSystems."/mnt/PiNAS" = {
+    device = "//10.0.0.16/Store";
+    fsType = "cifs";
+    options = let
+      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,iocharset=utf8,uid=1000,gid=100,rw,file_mode=0644,dir_mode=0755,nounix,nobrl";
+    in ["${automount_opts},credentials=/root/.PiNASsmbcredentials"];
+  };
+}
