@@ -92,6 +92,11 @@
     pwgen
     sddm-kcm
     # displaylink
+    kdeApplications.kate
+    kdeApplications.kompare
+    kdeApplications.gwenview
+    konversation
+
     openssl
     xdg_utils
     mkpasswd
