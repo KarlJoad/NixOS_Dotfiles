@@ -17,8 +17,8 @@
     ];
 
   boot = {
-    cleanTmpDir = true;
-    enableContainers = true;
+    cleanTmpDir = true; # Empty /tmp/ at every boot
+    enableContainers = true; # https://nixos.org/nixos/manual/index.html#ch-containers
   };
 
   nix = {
