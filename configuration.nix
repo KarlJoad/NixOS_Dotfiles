@@ -10,6 +10,7 @@
       ./modules/dev.nix
       ./modules/doc-prep.nix
       ./modules/monitoring.nix
+      ./modules/multimedia.nix
       ./modules/virtualization.nix
       ./modules/doc.nix
     ];
@@ -66,7 +67,6 @@
     stow
     vim emacs
     home-manager
-    spotify
     rxvt_unicode
     octave
     transmission
