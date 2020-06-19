@@ -84,7 +84,10 @@
     stow
     vim emacs
     home-manager
-    octave
+
+    octave sage
+    # scilab # Commented out as scilab-4.1.2 is marked as broken.
+
     transmission
     pwgen
     sddm-kcm
