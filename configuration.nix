@@ -91,7 +91,6 @@
     transmission
     pwgen
     sddm-kcm
-    # displaylink
     kdeApplications.kate
     kdeApplications.kompare
     kdeApplications.gwenview
@@ -102,6 +101,7 @@
     mkpasswd
     pass
 
+    # displaylink
   ];
   environment.shells = [ pkgs.bash pkgs.zsh ];
 
