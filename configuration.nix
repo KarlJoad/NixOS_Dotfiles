@@ -32,7 +32,13 @@
       dates = [ "weekly" ];
     };
     trustedUsers = [ "@wheel" "karl" ];
-    nixPath = [ "nixpkgs=https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz" "nixos-config=/etc/nixos/configuration.nix" "home-manager=https://github.com/rycee/home-manager/archive/master.tar.gz" "/nix/var/nix/profiles/per-user/root/channels" ];
+    nixPath = [
+      "nixpkgs=https://channels.nixos.org/nixos-20.03/nixexprs.tar.xz"
+      # "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos" # Default nixpkgs
+      "nixos-config=/etc/nixos/configuration.nix"
+      "home-manager=https://github.com/rycee/home-manager/archive/master.tar.gz"
+      "/nix/var/nix/profiles/per-user/root/channels" ];
+  };
   # Only run these Nix store services if plugged into wall.
   systemd.services = {
     nix-gc.unitConfig.ConditionACPower = true;
