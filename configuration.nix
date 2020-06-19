@@ -85,6 +85,7 @@
     vim emacs
     home-manager
 
+    tree
 
     firefox
     torbrowser
