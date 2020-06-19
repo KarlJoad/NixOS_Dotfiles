@@ -104,6 +104,8 @@
     kdeApplications.gwenview
     konversation
 
+    calibre
+
     openssl
     xdg_utils
     mkpasswd
