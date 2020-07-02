@@ -18,8 +18,8 @@
     };
     # Enable the xmonad and i3 Tiling window managers.
     windowManager = {
-      xmonad.enable = true;
-      i3.enable = true;
+      xmonad.enable = false;
+      i3.enable = false;
     };
   };
 }
