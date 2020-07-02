@@ -9,6 +9,8 @@
     eclipses.eclipse-java
     # Version Control Systems
     git
+    # nix-shell management for building projects
+    direnv
 
     # Build tooling for most languages
     gnumake cmake automake
@@ -47,5 +49,10 @@
     # Haskell
     ghc
     hlint
+
+    # Nix
+    nixfmt
   ];
+
+  services.lorri.enable = true;
 }
