@@ -155,13 +155,13 @@
   networking.firewall.enable = true;
 
   # Enable CUPS to print documents.
-  services.printing.enable = false;
+  services.printing.enable = true;
 
   services.flatpak.enable = true;
 
   # Enable sound.
-  sound.enable = false;
-  hardware.pulseaudio.enable = false;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Even though mutableUsers is false, root's password should still be set manually
   # with the prompt that `nixos-install` has after finishing installation.
