@@ -104,6 +104,7 @@
 
     tree
     ark
+    youtube-dl
 
     firefox
     torbrowser
