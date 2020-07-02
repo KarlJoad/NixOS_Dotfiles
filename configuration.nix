@@ -38,8 +38,25 @@
       # "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos" # Default nixpkgs
       "nixos-config=/etc/nixos/configuration.nix"
       "home-manager=https://github.com/rycee/home-manager/archive/master.tar.gz"
+      "unstable=https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       "/nix/var/nix/profiles/per-user/root/channels" ];
   };
+
+  # This overlay extends the definition of nixpkgs, so that when we use the scoping
+  # tool `with pkgs;' by default, we take packages from the stable channel. If we
+  # want something from the unstable channel, we just preface the package with
+  # unstable. For example:
+  # pkgs.mu => v1.2.x
+  # pkgs.unstable.mu => v 1.4.y
+  nixpkgs.overlays = [(self: super: {
+    unstable = import <unstable> {
+      # pass the nixpkgs config to the unstable alias
+      # The config = ... Ensures changes made to packages in the standard nixpkgs
+      # carry through.
+      config = config.nixpkgs.config;
+    };
+  })];
+
   # Only run these Nix store services if plugged into wall.
   systemd.services = {
     nix-gc.unitConfig.ConditionACPower = true;
