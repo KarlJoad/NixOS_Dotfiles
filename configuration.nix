@@ -181,6 +181,11 @@
     hashedPassword = "$6$SP0uXGjZaunNycZ$B7Yt8sdT26cq3Na0pfoGvE36De7cFdzP63JvbtV6myPglK4.LY1w/jFlbnkH9nCNR7qj8/ZztYTrzQYcUb9Ac1";
   };
 
+  services.emacs = {
+    install = true;
+    enable = true;
+  };
+
   system = {
     # This value determines the NixOS release from which the default
     # settings for stateful data, like file locations and database versions
