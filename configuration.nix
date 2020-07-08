@@ -86,7 +86,7 @@
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/Stockholm";
+  time.timeZone = "America/Chicago";
 
   nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
