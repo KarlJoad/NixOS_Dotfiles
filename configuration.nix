@@ -97,6 +97,8 @@
     unzip
     gnumake automake cmake
     rxvt_unicode alacritty
+    pciutils lsof
+    squashfsTools
 
     zsh zsh-completions zsh-fast-syntax-highlighting zsh-git-prompt oh-my-zsh
     stow
