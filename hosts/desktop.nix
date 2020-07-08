@@ -156,6 +156,32 @@ EndSection
 # END OF KARL CONFIGURATION
 ###########################
     '';
+    # xrandrHeads = [ # Provides `Section "Monitor"` portions of the config.
+    #   { # output = "DVI-I-1";
+    #     primary = true;
+    #     monitorConfig = ''
+    #     #   Identifier     "Monitor1"
+    #       VendorName     "Unknown"
+    #       ModelName      "LG Electronics MP59HT"
+    #       HorizSync       0.0 - 0.0
+    #       VertRefresh     0.0
+    #       Option         "DPMS"
+    #     '';
+    #   }
+    #   { # output = "DVI-D-0";
+    #     primary = false;
+    #     monitorConfig = ''
+    #     #   Identifier     "Monitor0"
+    #       VendorName     "Unknown"
+    #       ModelName      "HP x20LED"
+    #       HorizSync       24.0 - 83.0
+    #       VertRefresh     50.0 - 76.0
+    #       Option         "DPMS"
+    #     '';
+    #   }
+    # ];
+    # monitorSection = ''
+    # '';
     exportConfiguration = true; # Might need to change to true.
   };
 
