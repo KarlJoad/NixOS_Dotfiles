@@ -56,7 +56,6 @@
     # Interface-wide useDHCP will be deprecated, so per-interface useDHCP is used.
     useDHCP = false;
     interfaces = {
-      enp0s20f0u4u4i5.useDHCP = true;
       enp0s31f6.useDHCP = true;
       wlp4s0.useDHCP = true;
     };
