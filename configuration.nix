@@ -14,7 +14,7 @@
       ./modules/virtualization.nix
       ./modules/games.nix
       ./modules/doc.nix
-      ./remotefs/pinas.nix
+      ./remotefs/tor.nix ./remotefs/huginn.nix
     ];
 
   boot = {
