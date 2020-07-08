@@ -174,6 +174,7 @@
                     "docker"
                     "libvirtd"
                     "networkmanager"
+                    "video"
                   ];
     packages = with pkgs; [ ];
     shell = "${pkgs.zsh}/bin/zsh";
