@@ -20,6 +20,7 @@
   boot = {
     cleanTmpDir = true; # Empty /tmp/ at every boot
     enableContainers = true; # https://nixos.org/nixos/manual/index.html#ch-containers
+    supportedFilesystems = [ "ntfs" ]; # Allow me to mount NTFS partitions
   };
 
   nix = {
