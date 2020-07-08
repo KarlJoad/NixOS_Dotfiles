@@ -15,12 +15,13 @@
       ./modules/virtualization.nix
       ./modules/games.nix
       ./modules/doc.nix
-      ./remotefs/pinas.nix
+      ./remotefs/tor.nix ./remotefs/huginn.nix
     ];
 
   boot = {
     cleanTmpDir = true; # Empty /tmp/ at every boot
     enableContainers = true; # https://nixos.org/nixos/manual/index.html#ch-containers
+    supportedFilesystems = [ "ntfs" ]; # Allow me to mount NTFS partitions
   };
 
   nix = {
@@ -83,7 +84,7 @@
   };
 
   # Set your time zone.
-  time.timeZone = "Europe/Stockholm";
+  time.timeZone = "America/Chicago";
 
   nixpkgs.config.allowUnfree = true;
   # List packages installed in system profile. To search, run:
@@ -94,6 +95,8 @@
     unzip
     gnumake automake cmake
     rxvt_unicode alacritty
+    pciutils lsof
+    squashfsTools
 
     zsh zsh-completions zsh-fast-syntax-highlighting zsh-git-prompt oh-my-zsh
     stow
@@ -172,6 +175,7 @@
                     "docker"
                     "libvirtd"
                     "networkmanager"
+                    "video"
                   ];
     packages = with pkgs; [ ];
     shell = "${pkgs.zsh}/bin/zsh";

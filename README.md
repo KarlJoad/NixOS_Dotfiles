@@ -18,3 +18,11 @@ Namely, you should end up with a `tree` output that looks similar to this:
 │ └── graphical.nix
 └── README.md
 ```
+
+# To Install
+For the first installation, you must specify a path for the unstable channel to use, so that `<unstable>` is defined for the overlay.
+
+This is achieved with the command below.
+```sh
+nixos-install -I unstable=https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz
+```
