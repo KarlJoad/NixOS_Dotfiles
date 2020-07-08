@@ -156,6 +156,7 @@ EndSection
 # END OF KARL CONFIGURATION
 ###########################
     '';
+    exportConfiguration = true; # Might need to change to true.
   };
 
   nix.maxJobs = lib.mkDefault 8;
