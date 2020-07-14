@@ -8,6 +8,7 @@
       ./modules/graphical.nix
       ./modules/email.nix
       ./modules/dev.nix
+      ./modules/website.nix
       ./modules/doc-prep.nix
       ./modules/monitoring.nix
       ./modules/multimedia.nix
