@@ -10,7 +10,8 @@
 
     # Use the SDDM graphical login Display Manager
     displayManager = {
-      sddm.enable = true;
+      sddm.enable = false;
+      lightdm.enable = true;
     };
     # Enable the KDE Desktop Environment
     desktopManager = {
