@@ -15,6 +15,7 @@
       ./modules/virtualization.nix
       ./modules/games.nix
       ./modules/doc.nix
+      ./modules/zoom.nix
       ./remotefs/tor.nix ./remotefs/huginn.nix
     ];
 
