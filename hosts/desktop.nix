@@ -141,6 +141,12 @@
     exportConfiguration = true; # Change to false when done
   };
 
+  hardware = {
+    opengl.enable = true; # Enable OpenGL.
+    # Update microcode. Address "Firmware Bug" startup messages.
+    cpu.intel.updateMicrocode = true;
+  };
+
   nix.maxJobs = lib.mkDefault 8;
   powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
 }
