@@ -34,6 +34,8 @@
       automatic = true;
       dates = [ "weekly" ];
     };
+    useSandbox = true; # Explicitly sandbox program when building them
+    # When this is set, nix.useSandbox is true, which is useful for nixpkgs Pull Requests.
     trustedUsers = [ "@wheel" "karl" ];
     nixPath = [
       "nixpkgs=https://channels.nixos.org/nixos-20.03/nixexprs.tar.xz"
