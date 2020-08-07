@@ -137,6 +137,8 @@
     pass
 
     # displaylink
+    alsaUtils
+    pavucontrol
   ];
   environment.shells = [ pkgs.bash pkgs.zsh ];
 
