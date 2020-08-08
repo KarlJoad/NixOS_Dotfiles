@@ -60,6 +60,12 @@
       wlp4s0.useDHCP = true;
     };
   };
+
+  hardware.bluetooth.enable = true;
+  # hardware.pulseaudio.extraModules = [ pkgs.pulseaudio-modules-bt ];
+  hardware.pulseaudio.package = pkgs.pulseaudioFull;
+  services.blueman.enable = false;
+
   nix.maxJobs = lib.mkDefault 4;
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 }
