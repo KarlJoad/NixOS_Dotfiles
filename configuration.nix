@@ -100,6 +100,7 @@
     rxvt_unicode alacritty
     pciutils lsof
     squashfsTools
+    telnet
 
     # xlibs.xinit
 
