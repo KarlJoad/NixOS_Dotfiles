@@ -11,6 +11,7 @@
     texstudio # Nice GUI for editing TeX stuff.
     gimp inkscape # Image creation and manipulation (Raster and Vector).
 
-    okular zathura pdftk
+    # PDF viewers and editor
+    okular pdfpc zathura pdftk
   ];
 }
