@@ -8,5 +8,9 @@
     picard
     # Video players
     plex-media-player vlc
+
+    # Video/Audio Stream Manipulators
+    ffmpeg
+    mkvtoolnix
   ];
 }
