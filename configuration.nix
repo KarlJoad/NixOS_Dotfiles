@@ -16,7 +16,8 @@
       ./modules/games.nix
       ./modules/doc.nix
       ./modules/zoom.nix
-      ./remotefs/tor.nix ./remotefs/huginn.nix
+      # ./remotefs/tor.nix ./remotefs/huginn.nix
+      ./remotefs/triangle.nix
     ];
 
   boot = {
