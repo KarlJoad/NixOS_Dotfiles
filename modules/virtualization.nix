@@ -9,6 +9,6 @@
   virtualisation = {
     docker.enable = true;
     libvirtd.enable = true;
-    #   xen.enable = true;
+    # xen.enable = true;
   };
 }
