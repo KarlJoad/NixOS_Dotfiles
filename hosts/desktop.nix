@@ -138,7 +138,7 @@
     #     Option          "RightOf" "Monitor[0]"
     #   EndSection
     # '';
-    exportConfiguration = true; # Change to false when done
+    exportConfiguration = true; # Show xserver settings in xorg.conf file in /etc/X11/
   };
 
   hardware = {
