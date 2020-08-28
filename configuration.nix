@@ -120,7 +120,7 @@
 
     slack discord
 
-    octave sage
+    octaveFull sage
     # scilab # Commented out as scilab-4.1.2 is marked as broken.
 
     transmission
