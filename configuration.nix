@@ -38,7 +38,7 @@
       dates = [ "weekly" ];
     };
     autoOptimiseStore = true;
-    checkConfig = true;
+    # checkConfig = true;
     useSandbox = true; # Explicitly sandbox program when building them
     # When this is set, nix.useSandbox is true, which is useful for nixpkgs Pull Requests.
     trustedUsers = [ "@wheel" "karl" ];
