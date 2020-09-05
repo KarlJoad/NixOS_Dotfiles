@@ -27,6 +27,7 @@
   };
 
   nix = {
+    readOnlyStore = true; # Make /nix/store a read-only bind-mount
     gc = {
       automatic = true;
       dates = "weekly";
@@ -36,6 +37,8 @@
       automatic = true;
       dates = [ "weekly" ];
     };
+    autoOptimiseStore = true;
+    checkConfig = true;
     useSandbox = true; # Explicitly sandbox program when building them
     # When this is set, nix.useSandbox is true, which is useful for nixpkgs Pull Requests.
     trustedUsers = [ "@wheel" "karl" ];
