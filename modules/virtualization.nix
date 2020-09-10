@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     virt-manager
-    # xen docker
+    # xen
   ];
 
   virtualisation = {
@@ -11,8 +11,8 @@
     libvirtd.enable = true;
     # xen.enable = true;
     virtualbox.host = {
-      enable = true;
-      enableExtensionPack = true;
+      enable = false;
+      enableExtensionPack = false;
     };
   };
 
