@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     syncthing
-    # xen
+    syncthing-gtk # GUI client for syncthing application
   ];
 
   # Setup SyncThing
