@@ -9,6 +9,7 @@
       ./modules/email.nix
       ./modules/dev.nix
       ./modules/website.nix
+      ./modules/sync.nix
       ./modules/doc-prep.nix
       ./modules/monitoring.nix
       ./modules/multimedia.nix
