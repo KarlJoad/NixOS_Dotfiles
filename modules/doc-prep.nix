@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     libreoffice-fresh-unwrapped
     texlive.combined.scheme-full
-    ispell
+    ispell hunspell
     pygmentex
     python38Packages.pygments # Needed for pygmentize
     python38Packages.pygments-markdown-lexer
