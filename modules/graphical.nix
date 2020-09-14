@@ -33,4 +33,7 @@
       i3.enable = false;
     };
   };
+
+  # Needed for GTK/GNOME3 programs to write to their database files.
+  programs.dconf.enable = true;
 }
