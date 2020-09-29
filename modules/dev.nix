@@ -9,7 +9,7 @@
     eclipses.eclipse-java
     # Version Control Systems
     git
-    # nix-shell management for building projects
+    # nix-shell management for building projects, to be used with Lorri
     direnv
 
     # Build tooling for most languages
@@ -30,6 +30,7 @@
     rustc
     cargo
     rls # Rust Language Server
+    rust-analyzer
     rustup
     # Additional Packages
     rustracer
