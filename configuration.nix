@@ -17,6 +17,7 @@
       ./modules/games.nix
       ./modules/doc.nix
       ./modules/zoom.nix
+      ./modules/kdeconnect.nix
       # ./remotefs/tor.nix ./remotefs/huginn.nix
       ./remotefs/triangle.nix
     ];
