@@ -52,7 +52,10 @@
   networking = {
     hostName = "Karl-Nixos";
     # wireless.enable = true;
-    networkmanager.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+    };
     # Interface-wide useDHCP will be deprecated, so per-interface useDHCP is used.
     useDHCP = false;
     interfaces = {

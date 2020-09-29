@@ -48,7 +48,7 @@
       "nixpkgs=https://channels.nixos.org/nixos-20.03/nixexprs.tar.xz"
       # "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos" # Default nixpkgs
       "nixos-config=/etc/nixos/configuration.nix"
-      "home-manager=https://github.com/rycee/home-manager/archive/master.tar.gz"
+      "home-manager=https://github.com/nix-community/home-manager/archive/master.tar.gz"
       "unstable=https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       "/nix/var/nix/profiles/per-user/root/channels" ];
   };
