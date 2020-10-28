@@ -50,6 +50,7 @@
       "nixos-config=/etc/nixos/configuration.nix"
       "home-manager=https://github.com/nix-community/home-manager/archive/release-${config.system.stateVersion}.tar.gz"
       "unstable=https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
+      "nixos-hardware=https://github.com/NixOS/nixos-hardware/archive/master.tar.gz"
       "/nix/var/nix/profiles/per-user/root/channels" ];
   };
 
