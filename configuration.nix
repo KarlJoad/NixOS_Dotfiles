@@ -45,10 +45,10 @@
     # When this is set, nix.useSandbox is true, which is useful for nixpkgs Pull Requests.
     trustedUsers = [ "@wheel" "karl" ];
     nixPath = [
-      "nixpkgs=https://channels.nixos.org/nixos-20.03/nixexprs.tar.xz"
+      "nixpkgs=https://channels.nixos.org/nixos-${config.system.stateVersion}/nixexprs.tar.xz"
       # "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos" # Default nixpkgs
       "nixos-config=/etc/nixos/configuration.nix"
-      "home-manager=https://github.com/nix-community/home-manager/archive/master.tar.gz"
+      "home-manager=https://github.com/nix-community/home-manager/archive/release-${config.system.stateVersion}.tar.gz"
       "unstable=https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
       "/nix/var/nix/profiles/per-user/root/channels" ];
   };
@@ -125,7 +125,8 @@
 
     slack discord
 
-    octaveFull sage
+    octaveFull
+    # sage # Commented out as sage is marked as broken.
     # scilab # Commented out as scilab-4.1.2 is marked as broken.
 
     transmission
@@ -210,7 +211,7 @@
     # this value at the release version of the first install of this system.
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-    stateVersion = "20.03"; # Did you read the comment?
+    stateVersion = "20.09"; # Did you read the comment?
     autoUpgrade = {
       enable = true;
       allowReboot = false;
