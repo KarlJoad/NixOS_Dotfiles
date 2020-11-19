@@ -121,7 +121,7 @@
     youtube-dl
 
     firefox
-    torbrowser
+    # torbrowser
     transmission-gtk
 
     slack discord
