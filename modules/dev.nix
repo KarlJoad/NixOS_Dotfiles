@@ -30,7 +30,7 @@
     rustc
     cargo
     rls # Rust Language Server
-    rust-analyzer
+    # rust-analyzer
     rustup
     # Additional Packages
     rustracer
