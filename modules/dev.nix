@@ -56,4 +56,5 @@
   ];
 
   services.lorri.enable = true;
+  services.rpcbind.enable = true;
 }
