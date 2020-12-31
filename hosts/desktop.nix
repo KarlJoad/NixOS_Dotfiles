@@ -51,8 +51,8 @@
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nouveau" ]; # "nvidiaLegacy390" "intel" ];
     config = lib.mkForce "";
+    videoDrivers = [ "nvidia" ]; # "nouveau" "nvidiaLegacy390" "intel" ];
     # defaultDepth = 24;
     # verbose = 7;
     # serverLayoutSection = ''
