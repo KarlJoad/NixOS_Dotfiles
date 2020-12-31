@@ -53,6 +53,75 @@
     enable = true;
     config = lib.mkForce "";
     videoDrivers = [ "nvidia" ]; # "nouveau" "nvidiaLegacy390" "intel" ];
+#     config = lib.mkForce ''
+# # Section "ServerFlags"
+# #   Option "AllowMouseOpenFail" "on"
+# #   Option "DontZap" "on"
+# # EndSection
+
+# # Section "Module"
+# # EndSection
+
+# # Section "Monitor"
+# #   Identifier "Monitor[0]"
+# #   Option "LeftOf" "Monitor[1]"
+# # EndSection
+
+# # Section "Monitor"
+# #   Identifier "Monitor[1]"
+# #   Option "RightOf" "Monitor[0]"
+# # EndSection
+
+# # # Additional "InputClass" sections
+# # #
+# # Section "ServerLayout"
+# #   Identifier "Layout[all]"
+# #   # Reference the Screen sections for each driver.  This will
+# #   # cause the X server to try each in turn.
+# #   Screen 0 "Screen-nvidia[0]"
+# #   Screen 1 "Screen-nvidia[1]" RightOf "Screen-nvidia[0]"
+# # EndSection
+
+# # # For each supported driver, add a "Device" and "Screen"
+# # # section.
+
+# Section "Device"
+#   Identifier "Device-nvidia[0]"
+#   Driver "nvidia"
+#   VendorName "NVIDIA Corporation"
+#   BoardName "GeForce GTX 1080"
+#   BusID "PCI:1:0:0"
+#   # Option "Monitor-HDMI-0" "Monitor[0]"
+#   # Screen 0
+# EndSection
+
+# Section "Device"
+#   Identifier "Device-nvidia[1]"
+#   Driver "nvidia"
+#   VendorName "NVIDIA Corporation"
+#   BoardName "GeForce GTX 980Ti"
+#   BusID "PCI:2:0:0"
+#   # Option "Monitor-DVI-I-1" "Monitor[1]"
+#   # Screen 1
+# EndSection
+
+# # Section "Screen"
+# #   Identifier "Screen-nvidia[0]"
+# #   Device "Device-nvidia[0]"
+# #   Monitor "Monitor[0]"
+# #   Option "nvidiaXineramaInfoOrder" "DFP-1"
+# #   Option "metamodes" "DFP: nvidia-auto-select +0+0"
+# #   Option "MetaModeOrientation" "DFP-0 RightOf DFP-1"
+# # EndSection
+
+# # Section "Screen"
+# #   Identifier "Screen-nvidia[1]"
+# #   Device "Device-nvidia[1]"
+# #   Monitor "Monitor[1]"
+# #   Option "nvidiaXineramaInfoOrder" "DFP-1"
+# #   Option "metamodes" "DFP-1: nvidia-auto-select +0+0"
+# # EndSection
+#     '';
     # defaultDepth = 24;
     # verbose = 7;
     # serverLayoutSection = ''
