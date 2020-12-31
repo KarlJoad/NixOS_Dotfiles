@@ -51,8 +51,78 @@
 
   services.xserver = {
     enable = true;
-    config = lib.mkForce "";
     videoDrivers = [ "nvidia" ]; # "nouveau" "nvidiaLegacy390" "intel" ];
+#     config = lib.mkForce ''
+# Section "ServerLayout"
+#     Identifier     "Layout0"
+#     Screen      0  "Screen0"
+#     Screen      1  "Screen1" Rightof "Screen0"
+#     Option         "Xinerama" "1"
+# EndSection
+
+# Section "Monitor"
+#     # HorizSync source: edid, VertRefresh source: edid
+#     Identifier     "Monitor0"
+#     Option         "DPMS"
+# EndSection
+
+# Section "Monitor"
+#     Identifier     "Monitor1"
+#     Option         "DPMS"
+# EndSection
+
+# Section "Device"
+#     Identifier     "Device0"
+#     Driver         "nvidia"
+#     VendorName     "NVIDIA Corporation"
+#     BoardName      "GeForce GTX 1080"
+#     BusID          "PCI:1:0:0"
+# EndSection
+
+# Section "Device"
+#     Identifier     "Device1"
+#     Driver         "nvidia"
+#     VendorName     "NVIDIA Corporation"
+#     BoardName      "GeForce GTX 980Ti"
+#     BusID          "PCI:2:0:0"
+# EndSection
+
+# Section "Screen"
+#     Identifier     "Screen0"
+#     Device         "Device0"
+#     Monitor        "Monitor0"
+#     DefaultDepth    24
+#     Option         "Stereo" "0"
+#     Option         "nvidiaXineramaInfoOrder" "DFP-0"
+#     # Option         "metamodes" "DVI-D-0: nvidia-auto-select +1920+0, HDMI-1: nvidia-auto-select +4480+0, HDMI-2: nvidia-auto-select +0+0"
+#     Option         "SLI" "Off"
+#     Option         "MultiGPU" "Off"
+#     Option         "BaseMosaic" "off"
+#     SubSection     "Display"
+#         Depth       24
+#     EndSubSection
+# EndSection
+
+# Section "Screen"
+#     Identifier     "Screen1"
+#     Device         "Device1"
+#     Monitor        "Monitor1"
+#     DefaultDepth    24
+#     Option         "Stereo" "0"
+#     Option         "nvidiaXineramaInfoOrder" "DFP-0"
+#     # Option         "metamodes" "HDMI-1: nvidia-auto-select +4480+360, HDMI-2: nvidia-auto-select +0+360, DVI-D-0: nvidia-auto-select +1920+0"
+#     Option         "SLI" "Off"
+#     Option         "MultiGPU" "Off"
+#     Option         "BaseMosaic" "off"
+#     SubSection     "Display"
+#         Depth       24
+#     EndSubSection
+# EndSection
+
+# Section "Extensions"
+#     Option "Composite" "Disable"
+# EndSection
+#     '';
 #     config = lib.mkForce ''
 # # Section "ServerFlags"
 # #   Option "AllowMouseOpenFail" "on"
