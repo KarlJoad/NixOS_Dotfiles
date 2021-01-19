@@ -203,6 +203,7 @@
 
   home-manager = {
     useUserPackages = true;
+    useGlobalPkgs = true;
   };
 
   services.emacs = {
