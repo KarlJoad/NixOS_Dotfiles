@@ -201,6 +201,10 @@
     hashedPassword = "$6$SP0uXGjZaunNycZ$B7Yt8sdT26cq3Na0pfoGvE36De7cFdzP63JvbtV6myPglK4.LY1w/jFlbnkH9nCNR7qj8/ZztYTrzQYcUb9Ac1";
   };
 
+  home-manager = {
+    useUserPackages = true;
+  };
+
   services.emacs = {
     install = true;
     enable = true;
