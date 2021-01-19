@@ -4,6 +4,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
       ./modules/fs.nix
       ./modules/graphical.nix
       ./modules/email.nix
@@ -203,6 +204,11 @@
     shell = "${pkgs.zsh}/bin/zsh";
     # hashedPassword found with mkpasswd -m sha-512
     hashedPassword = "$6$SP0uXGjZaunNycZ$B7Yt8sdT26cq3Na0pfoGvE36De7cFdzP63JvbtV6myPglK4.LY1w/jFlbnkH9nCNR7qj8/ZztYTrzQYcUb9Ac1";
+  };
+
+  home-manager = {
+    useUserPackages = true;
+    useGlobalPkgs = true;
   };
 
   services.emacs = {
