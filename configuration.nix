@@ -110,6 +110,9 @@
     squashfsTools
     telnet
 
+    # Some Nix tools
+    nix-index
+
     # xlibs.xinit
 
     zsh zsh-completions zsh-fast-syntax-highlighting zsh-git-prompt oh-my-zsh
