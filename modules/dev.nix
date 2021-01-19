@@ -30,7 +30,7 @@
     rustc
     cargo
     rls # Rust Language Server
-    rust-analyzer
+    # rust-analyzer
     rustup
     # Additional Packages
     rustracer
@@ -56,4 +56,5 @@
   ];
 
   services.lorri.enable = true;
+  services.rpcbind.enable = true;
 }
