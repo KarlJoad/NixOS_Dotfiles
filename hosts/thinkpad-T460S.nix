@@ -60,10 +60,11 @@
       wifi.powersave = false;
     };
     # Interface-wide useDHCP will be deprecated, so per-interface useDHCP is used.
+    # Use only the options below OR networkmanager, but not both.
     useDHCP = false;
     interfaces = {
-      enp0s31f6.useDHCP = true;
-      wlp4s0.useDHCP = true;
+      enp0s31f6.useDHCP = false;
+      wlp4s0.useDHCP = false;
     };
   };
 
