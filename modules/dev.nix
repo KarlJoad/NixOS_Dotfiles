@@ -37,7 +37,7 @@
     rustfmt clippy
 
     # Java
-    jdk
+    jdk11
     gradle gradle-completion
 
     # Python
