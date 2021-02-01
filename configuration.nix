@@ -169,7 +169,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  services.openssh.enable = false;
+  services.openssh.enable = true;
   programs.ssh.forwardX11 = true;
 
   # Open ports in the firewall.
