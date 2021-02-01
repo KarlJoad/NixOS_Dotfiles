@@ -195,6 +195,7 @@
     isNormalUser = true;
     description = "Karl Hallsby";
     extraGroups = [ "wheel"
+                    "dialout"
                     "docker"
                     "libvirtd"
                     "networkmanager"
