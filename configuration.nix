@@ -170,6 +170,7 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.openssh.forwardX11 = true;
   # Allow my SSH to receive and forward X11 sessions
   programs.ssh.forwardX11 = true;
 
