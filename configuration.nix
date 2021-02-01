@@ -123,6 +123,7 @@
     tree
     ark
     youtube-dl
+    tigervnc
 
     firefox
     # torbrowser
