@@ -27,6 +27,9 @@
     };
   };
 
+  # Allow for my desktop to be reachable using the XRDP protocol
+  services.xrdp.enable = true;
+
   services.xserver = {
     enable = true;
     videoDrivers = [ "nouveau" ]; # "nvidiaLegacy390" "intel" ];

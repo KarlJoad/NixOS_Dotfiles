@@ -174,9 +174,6 @@
   # Allow my SSH to receive and forward X11 sessions
   programs.ssh.forwardX11 = true;
 
-  # Allow for my desktop to be reachable using the XRDP protocol
-  services.xrdp.enable = true;
-
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
