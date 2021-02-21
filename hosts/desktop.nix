@@ -4,12 +4,9 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports =
-    [ <nixpkgs/nixos/modules/installer/scan/not-detected.nix>
-    ];
-
   boot = {
     loader = {
+      efi.canTouchEfiVariables = true;
       systemd-boot = {
         enable = true;
         configurationLimit = 20; # Only keep the last 20 generations.
@@ -18,26 +15,7 @@
         memtest86.enable = true;
       };
     };
-
-    initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" "sr_mod" ];
-    initrd.kernelModules = [ ];
-    kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
   };
-
-  fileSystems."/" =
-    { device = "/dev/disk/by-uuid/e9cfae6e-91e4-47dc-a018-4b111f13d8f3";
-      fsType = "ext4";
-    };
-
-  fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/B92A-E549";
-      fsType = "vfat";
-    };
-
-  swapDevices =
-    [ { device = "/dev/disk/by-uuid/fae28b9f-66b7-48f3-9217-1b3275894290"; }
-    ];
 
   networking = {
     hostName = "Karl-Desktop";
