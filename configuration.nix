@@ -71,6 +71,10 @@
     };
   })];
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "go-1.14.15"
+  ];
+
   # Only run these Nix store services if plugged into wall.
   systemd.services = {
     nix-gc.unitConfig.ConditionACPower = true;
