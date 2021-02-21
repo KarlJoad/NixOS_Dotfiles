@@ -1,1 +1,4 @@
 hardware-configuration.nix
+
+# Symlink to the current computer.
+host.nix
