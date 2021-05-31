@@ -209,6 +209,7 @@
     extraGroups = [ "wheel"
                     "dialout"
                     "docker"
+                    "kvm"
                     "libvirtd"
                     "networkmanager"
                     "video"
