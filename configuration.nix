@@ -122,7 +122,8 @@
 
     zsh zsh-completions zsh-fast-syntax-highlighting zsh-git-prompt oh-my-zsh
     stow
-    vim emacs
+    vim
+    (emacs.override { withXwidgets = true; })
     home-manager
 
     tree

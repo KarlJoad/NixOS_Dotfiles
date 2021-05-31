@@ -3,7 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     # Text editors
-    vscode vim emacs
+    vscode vim
     # IDEs
     jetbrains.pycharm-community
     eclipses.eclipse-java
