@@ -184,6 +184,9 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [
+    27017 # MongoDB
+  ];
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
