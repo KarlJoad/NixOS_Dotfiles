@@ -226,8 +226,8 @@
   };
 
   services.emacs = {
-    install = true;
-    enable = true;
+    install = true; # Whether to create the emacs server user service
+    enable = true; # Whether to start the emacs server user service
   };
 
   system = {
