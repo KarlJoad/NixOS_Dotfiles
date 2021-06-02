@@ -50,7 +50,8 @@
     [ { device = "/dev/disk/by-uuid/7180a2c1-dae4-4dc3-95ad-2d8a77811520"; }
     ];
 
-  services.xserver.libinput.disableWhileTyping = true;
+  # Disable the touchpad while typing on the keyboard.
+  services.xserver.libinput.touchpad.disableWhileTyping = true;
 
   networking = {
     hostName = "Karl-Nixos";
