@@ -145,9 +145,9 @@
     pwgen
 
     sddm-kcm
-    kdeApplications.kate
-    kdeApplications.kompare
-    kdeApplications.gwenview
+    kate
+    kompare
+    gwenview
     konversation
 
     calibre
