@@ -136,6 +136,7 @@
     transmission-gtk
 
     slack discord
+    element-desktop
 
     octaveFull
     # sage # Commented out as sage is marked as broken.
