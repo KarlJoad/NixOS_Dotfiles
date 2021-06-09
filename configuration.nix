@@ -28,6 +28,7 @@
     cleanTmpDir = true; # Empty /tmp/ at every boot
     enableContainers = true; # https://nixos.org/nixos/manual/index.html#ch-containers
     supportedFilesystems = [ "ntfs" ]; # Allow me to mount NTFS partitions
+    binfmt.emulatedSystems = [ "aarch64-linux" ]; # Cross-compile for aarch64 using QEMU
   };
 
   nix = {
