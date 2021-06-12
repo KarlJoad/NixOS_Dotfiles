@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
     manpages
     posix_man_pages
+    w3m # For showing nixos-help in terminal
   ];
 
   documentation = {
