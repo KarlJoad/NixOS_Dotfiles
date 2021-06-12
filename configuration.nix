@@ -163,7 +163,7 @@
     alsaUtils
     pavucontrol
   ];
-  environment.shells = [ pkgs.bash pkgs.zsh ];
+  environment.shells = [ pkgs.bash pkgs.zsh pkgs.fish ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
