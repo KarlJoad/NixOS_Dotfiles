@@ -116,6 +116,8 @@
     squashfsTools
     telnet
 
+    pinentry gnupg
+
     # Some Nix tools
     nix-index
 
