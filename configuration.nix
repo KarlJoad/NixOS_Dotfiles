@@ -71,6 +71,8 @@
       # carry through.
       config = config.nixpkgs.config;
     };
+
+    emacs = super.emacs.override { withXwidgets = true; };
   })];
 
   nixpkgs.config.permittedInsecurePackages = [
@@ -125,7 +127,7 @@
     zsh zsh-completions zsh-fast-syntax-highlighting zsh-git-prompt oh-my-zsh
     stow
     vim
-    (emacs.override { withXwidgets = true; })
+    emacs
     home-manager
 
     tree
