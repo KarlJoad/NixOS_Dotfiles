@@ -133,7 +133,7 @@
     tree
     ark
     youtube-dl
-    tigervnc
+    remmina
 
     firefox
     # torbrowser
