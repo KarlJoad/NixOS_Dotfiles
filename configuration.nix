@@ -136,6 +136,7 @@
     remmina
 
     firefox
+    nyxt
     # torbrowser
     transmission-gtk
 
