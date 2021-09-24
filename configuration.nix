@@ -137,6 +137,7 @@
 
     firefox
     nyxt
+    xclip xsel # Programs that nyxt needs to interact with the clipboard
     # torbrowser
     transmission-gtk
 
