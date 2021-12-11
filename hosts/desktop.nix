@@ -146,6 +146,6 @@
     cpu.amd.updateMicrocode = true;
   };
 
-  nix.maxJobs = lib.mkDefault 8;
+  nix.maxJobs = lib.mkDefault 32;
   powerManagement.cpuFreqGovernor = lib.mkForce "performance";
 }
