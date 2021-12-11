@@ -14,5 +14,8 @@
 
     # PDF viewers and editor
     okular pdfpc zathura pdftk
+
+    # Graph Creators
+    graphviz dot2tex
   ];
 }
