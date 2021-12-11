@@ -53,6 +53,15 @@
 
     # Nix
     nixfmt
+
+    # GNU Guile Scheme
+    guile
+    guile-fibers
+    guile-lib
+    guile-lint
+    guile-ncurses
+    guile-reader
+
   ];
 
   services.lorri.enable = true;
