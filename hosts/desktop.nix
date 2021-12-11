@@ -122,6 +122,22 @@
     exportConfiguration = true; # Show xserver settings in xorg.conf file in /etc/X11/
   };
 
+  environment.systemPackages = with pkgs; [
+    # ipmicfg
+    ipmitool
+    ipmiutil
+  ];
+
+  boot.kernelModules = [ "kvm-amd"
+                         "ipmi_msghandler" # Core part of kernel modules
+                         "ipmi_devintf" # Provide ioctls for ipmi device
+                         "ipmi_si" # Provide system interfaces
+                         "ipmi_ssif" # Access BMCs on SMBus
+                         "ipmi_powernv" # Access POWERNV systems
+                         "ipmi_watchdog" # Improve standard watchdog timers
+                         "ipmi_poweroff" # Turn off system using IPMI
+                       ];
+
   hardware = {
     opengl.enable = true; # Enable OpenGL.
     # Update microcode. Address "Firmware Bug" startup messages.
