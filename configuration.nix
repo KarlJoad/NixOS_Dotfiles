@@ -132,7 +132,7 @@
 
     tree
     ark
-    youtube-dl
+    yt-dlp #  Replacement for youtube-dl that is MUCH faster
     remmina
 
     firefox
