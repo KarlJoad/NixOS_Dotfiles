@@ -62,6 +62,8 @@
     guile-ncurses
     guile-reader
 
+    # Common Lisp
+    sbcl
   ];
 
   services.lorri.enable = true;
