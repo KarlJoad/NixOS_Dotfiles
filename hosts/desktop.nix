@@ -125,7 +125,7 @@
   hardware = {
     opengl.enable = true; # Enable OpenGL.
     # Update microcode. Address "Firmware Bug" startup messages.
-    cpu.intel.updateMicrocode = true;
+    cpu.amd.updateMicrocode = true;
   };
 
   nix.maxJobs = lib.mkDefault 8;
