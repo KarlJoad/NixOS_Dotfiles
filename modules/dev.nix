@@ -33,7 +33,6 @@
     # rust-analyzer
     rustup
     # Additional Packages
-    rustracer
     rustfmt clippy
 
     # Java
@@ -42,7 +41,6 @@
 
     # Python
     python3 # Since Python 2.x is EOL, forget about it, and just have Python 3
-    python37Packages.python-language-server
 
     # SML (Standard ML) of New Jersey
     smlnj
