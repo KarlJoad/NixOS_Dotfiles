@@ -150,6 +150,7 @@
 
     transmission
     pwgen
+    openconnect # For IIT VPN
 
     sddm-kcm
     kate
