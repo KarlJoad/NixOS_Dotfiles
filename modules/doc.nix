@@ -4,6 +4,7 @@
   environment.systemPackages = with pkgs; [
     manpages
     posix_man_pages
+    linux-manual # man(9) pages for kernel-internal functions
     w3m # For showing nixos-help in terminal
   ];
 
