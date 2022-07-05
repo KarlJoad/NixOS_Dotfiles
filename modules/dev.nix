@@ -27,11 +27,9 @@
     clang-tools clang-manpages
 
     # Rust
-    rustc
-    cargo
-    rls # Rust Language Server
-    # rust-analyzer
+    # We only need rustup. We can then use rustup to install rustc and cargo versions that match each other.
     rustup
+    rust-analyzer
     # Additional Packages
     rustfmt clippy
 
