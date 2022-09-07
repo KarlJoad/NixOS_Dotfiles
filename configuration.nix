@@ -1,37 +1,67 @@
-{ config, pkgs, ... }:
-
+{ config, pkgs, lib, ... }:
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-      ./host.nix
-      <home-manager/nixos>
-      ./modules/fs.nix
-      ./modules/graphical.nix
-      ./modules/email.nix
-      ./modules/dev.nix
-      ./modules/website.nix
-      ./modules/sync.nix
-      ./modules/doc-prep.nix
-      ./modules/monitoring.nix
-      ./modules/multimedia.nix
-      ./modules/virtualization.nix
-      ./modules/games.nix
-      ./modules/doc.nix
-      ./modules/zoom.nix
-      ./modules/kdeconnect.nix
-      # ./remotefs/tor.nix ./remotefs/huginn.nix
-      ./remotefs/triangle.nix
+    [ # ./modules/graphical.nix
+      # ./modules/printing.nix
     ];
 
+  # if you have a Raspberry Pi 2 or 3, pick this:
+  # boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_4_19;
+  hardware.enableRedistributableFirmware = true;
+
+  # A bunch of boot parameters needed for optimal runtime on RPi 3b+
   boot = {
-    cleanTmpDir = true; # Empty /tmp/ at every boot
-    enableContainers = true; # https://nixos.org/nixos/manual/index.html#ch-containers
-    supportedFilesystems = [ "ntfs" ]; # Allow me to mount NTFS partitions
+    kernelParams = ["cma=256M"];
+    cleanTmpDir = true;
+    # NixOS wants to enable GRUB by default
+    loader.grub.enable = false;
+    loader.raspberryPi = {
+      enable = true;
+      version = 3;
+      uboot.enable = true;
+      firmwareConfig = ''
+        gpu_mem=256
+        force_turbo=1
+      '';
+    };
   };
 
+  # Internationalisation properties.
+  i18n.defaultLocale = "en_US.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "us";
+  };
+
+  # Set time zone.
+  time.timeZone = "America/Chicago";
+
+  nixpkgs.config.allowUnfree = true;
+  environment.systemPackages = with pkgs; [
+    coreutils vim emacs git
+    home-manager
+    libraspberrypi
+    syncthing
+  ];
+
+  # File systems configuration for using the installer's partition layout
+  fileSystems = {
+    "/" = {
+      device = "/dev/disk/by-label/NIXOS_SD";
+      fsType = "ext4";
+    };
+    "/boot/firmware" = {
+      device = "/dev/disk/by-label/FIRMWARE";
+      fsType = "vfat";
+      options = [ "nofail" "noauto" ];
+    };
+  };
+
+  # Preserve space by sacrificing documentation and history
+  documentation.nixos.enable = false;
+
   nix = {
-    readOnlyStore = true; # Make /nix/store a read-only bind-mount
     gc = {
       automatic = true;
       dates = "weekly";
@@ -41,163 +71,74 @@
       automatic = true;
       dates = [ "weekly" ];
     };
-    autoOptimiseStore = true;
-    # checkConfig = true;
+    readOnlyStore = true;
     useSandbox = true; # Explicitly sandbox program when building them
     # When this is set, nix.useSandbox is true, which is useful for nixpkgs Pull Requests.
     trustedUsers = [ "@wheel" "karl" ];
     nixPath = [
       "nixpkgs=https://channels.nixos.org/nixos-${config.system.stateVersion}/nixexprs.tar.xz"
-      # "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos" # Default nixpkgs
       "nixos-config=/etc/nixos/configuration.nix"
       "home-manager=https://github.com/nix-community/home-manager/archive/release-${config.system.stateVersion}.tar.gz"
-      "unstable=https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz"
-      "nixos-hardware=https://github.com/NixOS/nixos-hardware/archive/master.tar.gz"
       "/nix/var/nix/profiles/per-user/root/channels" ];
   };
 
-  # This overlay extends the definition of nixpkgs, so that when we use the scoping
-  # tool `with pkgs;' by default, we take packages from the stable channel. If we
-  # want something from the unstable channel, we just preface the package with
-  # unstable. For example:
-  # pkgs.mu => v1.2.x
-  # pkgs.unstable.mu => v 1.4.y
-  nixpkgs.overlays = [(self: super: {
-    unstable = import <unstable> {
-      # pass the nixpkgs config to the unstable alias
-      # The config = ... Ensures changes made to packages in the standard nixpkgs
-      # carry through.
-      config = config.nixpkgs.config;
-    };
-  })];
-
-  nixpkgs.config.permittedInsecurePackages = [
-    "go-1.14.15"
-  ];
-
-  # Only run these Nix store services if plugged into wall.
-  systemd.services = {
-    nix-gc.unitConfig.ConditionACPower = true;
-    nix-optimise.unitConfig.ConditionACPower = true;
-  };
-
-  networking = {
-    # Global useDHCP flag is deprecated, therefore explicitly set to false here.
-    # Per-interface useDHCP will be mandatory in the future.
-    useDHCP = false;
-    nameservers = [ "8.8.8.8" "8.8.4.4" ];
-  };
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "us";
-  };
-
-  # Set your time zone.
-  time.timeZone = "America/Chicago";
-
-  nixpkgs.config.allowUnfree = true;
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    coreutils moreutils
-    git wget
-    unzip
-    gnumake automake cmake
-    rxvt_unicode alacritty
-    pciutils lsof
-    squashfsTools
-    telnet
-
-    # Some Nix tools
-    nix-index
-
-    # xlibs.xinit
-
-    zsh zsh-completions zsh-fast-syntax-highlighting zsh-git-prompt oh-my-zsh
-    stow
-    vim
-    (emacs.override { withXwidgets = true; })
-    home-manager
-
-    tree
-    ark
-    youtube-dl
-    tigervnc
-
-    firefox
-    # torbrowser
-    transmission-gtk
-
-    slack discord
-
-    octaveFull
-    # sage # Commented out as sage is marked as broken.
-    # scilab # Commented out as scilab-4.1.2 is marked as broken.
-
-    transmission
-    pwgen
-
-    sddm-kcm
-    kdeApplications.kate
-    kdeApplications.kompare
-    kdeApplications.gwenview
-    konversation
-
-    calibre
-
-    openssl
-    xdg_utils
-    mkpasswd
-    pass
-
-    # displaylink
-    alsaUtils
-    pavucontrol
-  ];
-  environment.shells = [ pkgs.bash pkgs.zsh ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  #   pinentryFlavor = "gnome3";
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
+  # Configure SSH (server-side) access
   services.openssh.enable = true;
+  services.openssh.permitRootLogin = "no";
   services.openssh.forwardX11 = true;
-  # Allow my SSH to receive and forward X11 sessions
+  # Configure SSH (client-side) access
   programs.ssh.forwardX11 = true;
 
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    27017 # MongoDB
-  ];
+  services.znc = {
+    enable = true;
+    mutable = false; # Make the configuration file for ZNC immutable
+    useLegacyConfig = false; # Do not need backwards compatibility.
+    openFirewall = true; # ZNC uses TCP port 5000 by default.
+    config = {
+      # Listener.IPv4 = true;
+      LoadModule = [ "adminlog" "webadmin" ];
+      User.KarlJoad = {
+        Admin = true;
+        Nick = "KarlJoad";
+        AltNick = "KarlJoad-";
+        Pass.password = {
+          Method = "sha256";
+          Hash = "43df670d4ea6f514dbcb9f0adb74e9e1e770bce1d11207d25d87078064f297b4";
+          Salt = "4Gjf8N.,V8xQ-)60zF7-";
+        };
+        Network.libera = {
+          Server = "irc.libera.chat +6697 *password*";
+          Chan = { "#nixos" = { }; "#home-manager" = { }; "#emacs" = { };
+                   "#systemcrafters" = { }; "#nyxt" = { }; "#guix" = { };
+                 };
+          Nick = "KarlJoad";
+          AltNick = "KarlJoad-";
+          LoadModule = [ "nickserv" ];
+          JoinDelay = 5; # Avoid joining channels before authenticating.
+        };
+        Network.oftc = {
+          Server = "irc.oftc.net +6697 *password*";
+          Chan = { "#buildroot" = { }; "#qemu" = { }; };
+          Nick = "KarlJoad";
+          AltNick = "KarlJoad-";
+          LoadModule = [ "nickserv" ];
+          JoinDelay = 5;
+        };
+      };
+    };
+  };
 
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
-  services.printing.drivers = with pkgs; [ gutenprint gutenprintBin
-                                           brlaser brgenml1lpr brgenml1cupswrapper ];
+  # Setup SyncThing
+  services.syncthing = {
+    enable = true;
+    user = "karl";
+    dataDir = "/home/karl/Syncthing";
+    configDir = "/home/karl/.config/syncthing";
+  };
 
-  services.flatpak.enable = true;
-
-  # Enable sound.
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
+  # Use 1GB of additional swap memory in order to not run out of memory
+  # when installing lots of things while running other things at the same time.
+  swapDevices = [ { device = "/swapfile"; size = 1024; } ];
 
   # Even though mutableUsers is false, root's password should still be set manually
   # with the prompt that `nixos-install` has after finishing installation.
@@ -206,42 +147,25 @@
   users.users.karl = {
     isNormalUser = true;
     description = "Karl Hallsby";
-    extraGroups = [ "wheel"
-                    "dialout"
-                    "docker"
-                    "kvm"
-                    "libvirtd"
-                    "networkmanager"
-                    "video"
-                  ];
+    extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [ ];
     shell = "${pkgs.zsh}/bin/zsh";
-    # hashedPassword found with mkpasswd -m sha-512
     hashedPassword = "$6$SP0uXGjZaunNycZ$B7Yt8sdT26cq3Na0pfoGvE36De7cFdzP63JvbtV6myPglK4.LY1w/jFlbnkH9nCNR7qj8/ZztYTrzQYcUb9Ac1";
+    openssh.authorizedKeys.keys = [
+      "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDV72kcxMmp371A3ykTGhXeqP013CTKHJyvH/oDplx2IJvQhOULX+RTSyWLBIDU0UtKMlNyadnUCUkiOEL3VhtrogwEiuZ3FLwHOE3obwzWEE9IBdLe54SkdwMVuNUd+WzjlFEgMjKnfTJLQJsOYA5tbLdeiTCC9FLMr6dN31rMZaCU9ff68yvSpiA4YeGQ0Rr7P1eWDB7CoNbr/7ITq5vhuYc7PMzqU1P+ZHuQRfi3m7IhFEicqzsLcsENanhxuQqk29JO1jXfy44VRmYqvrEnYHE3vRmIi4fffE0zPKax5Jxwmi1AgaQsKlBFZgdM5WVAblO58g1ACqo8jIN2H7NVCqSK8vgxYzGgkKwgpgBBcT2wWgrfxUL9E1GBgf5+Z9xlxO4ZHHCYz6H2rb05Pz6cNIwsGPPpj7WDqAMZJOEBerC944HNROJ0VfH5rHNEUFKbMf+wGM4FWicMdU8KAUloGRPMoB9rHLwx4/M8mNUxaItIx6e6frJtA40jUH5hQIpH9nIxdZ6BR0r/+MDOQ5mBjUTB3Kau7pjBzx9ZhegAFPzOp27LwslxXWeXQmcTHoKybGzSOxNwrFt0VQ5HOMlnpGn9EEJLBdOkVY3SnWF5k0ZOmRCB/iJNVBUHTqJgUuC0hSAgk3M4GIZLCK6lYn/SV8PUqu6cxv6mdoXELF8e6Q== Karl-Desktop"
+    ];
   };
 
-  home-manager = {
-    useUserPackages = true;
-    useGlobalPkgs = true;
-  };
-
-  services.emacs = {
-    install = true; # Whether to create the emacs server user service
-    enable = true; # Whether to start the emacs server user service
-  };
-
-  system = {
-    # This value determines the NixOS release from which the default
-    # settings for stateful data, like file locations and database versions
-    # on your system were taken. It‘s perfectly fine and recommended to leave
-    # this value at the release version of the first install of this system.
-    # Before changing this value read the documentation for this option
-    # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-    stateVersion = "20.09"; # Did you read the comment?
-    autoUpgrade = {
+  networking = {
+    hostName = "Karl-Pi-NixOS";
+    firewall = {
       enable = true;
-      allowReboot = false;
-      channel = "https://channels.nixos.org/nixos-unstable/";
+      allowedTCPPorts = [ 22    # SSH
+                          631   # CUPS Print Server Web GUI
+                          5000 # ZNC
+                          8384  # SyncThing
+                          8080 # ZNC GUI
+                        ];
     };
   };
 }
