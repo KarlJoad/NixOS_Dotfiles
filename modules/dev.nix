@@ -25,6 +25,7 @@
     ccls # C/C++ Language Server
     clang-analyzer
     clang-tools clang-manpages
+    glibcInfo
 
     # Rust
     # We only need rustup. We can then use rustup to install rustc and cargo versions that match each other.
