@@ -219,6 +219,9 @@
     #jack.enable = true;
   };
 
+  # Automatically trim SSDs
+  services.fstrim.enable = true;
+
   # Even though mutableUsers is false, root's password should still be set manually
   # with the prompt that `nixos-install` has after finishing installation.
   users.mutableUsers = false;
