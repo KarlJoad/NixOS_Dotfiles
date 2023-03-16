@@ -43,11 +43,13 @@
       automatic = true;
       dates = [ "weekly" ];
     };
-    autoOptimiseStore = true;
     # checkConfig = true;
-    useSandbox = true; # Explicitly sandbox program when building them
-    # When this is set, nix.useSandbox is true, which is useful for nixpkgs Pull Requests.
-    trustedUsers = [ "@wheel" "karl" ];
+    settings = {
+      auto-optimise-store = true;
+      sandbox = true; # Explicitly sandbox program when building them
+      # When this is set, nix.useSandbox is true, which is useful for nixpkgs Pull Requests.
+      trusted-users = [ "@wheel" "karl" ];
+    };
     nixPath = [
       "nixpkgs=https://channels.nixos.org/nixos-${config.system.stateVersion}/nixexprs.tar.xz"
       # "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos" # Default nixpkgs
