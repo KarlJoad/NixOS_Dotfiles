@@ -73,8 +73,6 @@
       # carry through.
       config = config.nixpkgs.config;
     };
-
-    emacs = super.emacs.override { withXwidgets = true; };
   })];
 
   nixpkgs.config.permittedInsecurePackages = [
